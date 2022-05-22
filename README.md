@@ -36,16 +36,6 @@ Tumor segmentation is considered a difficult task even when using state of the a
 The application of this project is in medical imaging domain.
 
 
-### Dataset
-
-The chosen dataset is <cite><a href="https://www.med.upenn.edu/cbica/brats2020/data.html">BraTS2020</a></cite> [2, 3, 4, 5, 6, 7]. It is divided into three separate cohorts: Training, Validation, and Testing. The Training dataset
-is composed of multi-parametric MRI (mpMRI) scans from 369 diffuse glioma patients; glioma is considered a type of tumor. Each MRI volume is skull-stripped (the skull was extracted), and there are annotated masks for the tumors. The ground truth labels (masks) were provided by expert human annotators. 
-
-The BraTS 2020 Validation cohort is composed of 125 cases of patients with diffuse
-gliomas, and it is similar to the Training Dataset. The ground truth labels for the validation data are not provided.
-
-For now, we don't plan to use the Testing Dataset in this project.
-
 ### Image Processing Tasks
 
 The following methods can be applied:
@@ -61,10 +51,19 @@ According to [1], the following segmentation methods can be applied to MRI Brain
 - Region Growing
 - Thresholding (Global or Local)
 
+### Dataset
+
+The chosen dataset is <cite><a href="https://www.med.upenn.edu/cbica/brats2020/data.html">BraTS2020</a></cite> [2, 3, 4, 5, 6, 7]. It is divided into three separate cohorts: Training, Validation, and Testing. The Training dataset
+is composed of multi-parametric MRI (mpMRI) scans from 369 diffuse glioma patients; glioma is considered a type of tumor. Each MRI volume is skull-stripped (the skull was extracted), and there are annotated masks for the tumors. The ground truth labels (masks) were provided by expert human annotators. 
+
+The BraTS 2020 Validation cohort is composed of 125 cases of patients with diffuse
+gliomas, and it is similar to the Training Dataset. The ground truth labels for the validation data are not provided.
+
+For now, we don't plan to use the Testing Dataset in this project.
 
 ### Input/Output Examples
 
-![brain](brain.png)  |  ![]()
+![brain](images/brain.png)  |  ![]()
 
 ### Metrics
 
@@ -74,7 +73,7 @@ In this project, our main metric is IOU. The "segmented area" is defined as the 
 
 IOU is defined as the interssection of "segmented area" and the "Ground Truth (mask)" area, divided by the union of both of those two areas:
 
-![iou](iou.png)  |  ![]()
+![iou](images/iou.png)  |  ![]()
 
 
 ### References

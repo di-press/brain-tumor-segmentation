@@ -46,9 +46,13 @@ For now, we don't plan to use the Testing Dataset in this project.
 
 ### Image Processing Tasks
 
-equalizaçaõ de histograma ,image filtering e operador morfológico, 
+The following methods can be applied:
 
-According to [], the following segmentation methods can be applied to MRI Brain Tumor Segmentation task:
+- Histogram Equalization
+- Image Filtering
+- Morphological Operations
+
+According to [1], the following segmentation methods can be applied to MRI Brain Tumor Segmentation task:
 
 - K-Means
 - Watershed

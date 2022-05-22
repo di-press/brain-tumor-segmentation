@@ -27,7 +27,9 @@ and exhibit considerable variability from patient to patient. " </em>
 
 This project aims to segment brain tumor from magnetic resonance imaging (MRI) scans. This task involves separating the tumoral tissue from the normal gray matter and white matter tissues of the brain. 
 
-The simplicity of the segmentation method and the degree of human supervision of the task is important for clicinal acceptance in the field - for this reason, this project focuses more on interpretable and simple methods of segmentation than emphasizing "black box" techniques (such as Deep Learning). 
+The simplicity of the segmentation method and the degree of human supervision of the task is important for clicinal acceptance in the field - for this reason, this project focuses more on interpretable and simple methods of segmentation than emphasizing "black box" techniques (such as Deep Learning).
+
+Tumor segmentation is considered a difficult task even when using state of the art techniques. In this poject, we aim to surpass the difficulties involved to obtain the best achievable result by using simple methods.
 
 ### Application
 
@@ -66,6 +68,15 @@ According to [1], the following segmentation methods can be applied to MRI Brain
 
 ### Metrics
 
+Intersection over Union (IOU) is an evaluation metric used to measure the accuracy of an object detector, and it is commonly applied to segmentation task evaluation [8]. 
+
+In this project, our main metric is IOU. The "segmented area" is defined as the segmentation image produced by our models. The "Ground Truth (mask)" is the mask provided by human annotation, contained in the BraTS2020 dataset.
+
+IOU is defined as the interssection of "segmented area" and the "Ground Truth (mask)" area, divided by the union of both of those two areas:
+
+![iou](iou.png)  |  ![]()
+
+
 ### References
 
 [1] Nelly Gordillo, Eduard Montseny, Pilar Sobrevilla,
@@ -88,3 +99,5 @@ https://doi.org/10.1016/j.mri.2013.05.002.
 [6] S. Bakas, H. Akbari, A. Sotiras, M. Bilello, M. Rozycki, J. Kirby, et al., "Segmentation Labels and Radiomic Features for the Pre-operative Scans of the TCGA-GBM collection", The Cancer Imaging Archive, 2017. DOI: 10.7937/K9/TCIA.2017.KLXWJJ1Q
 
 [7] S. Bakas, H. Akbari, A. Sotiras, M. Bilello, M. Rozycki, J. Kirby, et al., "Segmentation Labels and Radiomic Features for the Pre-operative Scans of the TCGA-LGG collection", The Cancer Imaging Archive, 2017. DOI: 10.7937/K9/TCIA.2017.GJQ7R0EF
+
+[8] https://giou.stanford.edu/

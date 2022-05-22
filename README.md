@@ -42,11 +42,13 @@ is composed of multi-parametric MRI (mpMRI) scans from 369 diffuse glioma patien
 The BraTS 2020 Validation cohort is composed of 125 cases of patients with diffuse
 gliomas, and it is similar to the Training Dataset. The ground truth labels for the validation data are not provided.
 
-For now, we don't plan to use the Testing dataset in this project.
+For now, we don't plan to use the Testing Dataset in this project.
 
 ### Image Processing Tasks
 
-According to [], the following segmentation methods can be applied to MRI Brain TUmor Segmentation task:
+equalizaçaõ de histograma ,image filtering e operador morfológico, 
+
+According to [], the following segmentation methods can be applied to MRI Brain Tumor Segmentation task:
 
 - K-Means
 - Watershed
@@ -54,12 +56,9 @@ According to [], the following segmentation methods can be applied to MRI Brain 
 - Thresholding (Global or Local)
 
 
-
 ### Input/Output Examples
 
-Input Image                |  Output Image
-:-------------------------:|:-------------------------:
-![]()  |  ![]()
+![brain](brain.png)  |  ![]()
 
 ### Metrics
 

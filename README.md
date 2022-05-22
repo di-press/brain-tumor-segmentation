@@ -38,12 +38,6 @@ The application of this project is in medical imaging domain.
 
 ### Image Processing Tasks
 
-The following methods can be applied:
-
-- Histogram Equalization
-- Image Filtering
-- Morphological Operations
-
 According to [1], the following segmentation methods can be applied to MRI Brain Tumor Segmentation task:
 
 - K-Means
@@ -51,17 +45,25 @@ According to [1], the following segmentation methods can be applied to MRI Brain
 - Region Growing
 - Thresholding (Global or Local)
 
+among others.
+
+Besides the segmentation itself, according to [1], other image processing methods can be applied as auxiliary steps, such as :
+
+- Image Enhancement
+- Image Filtering
+- Morphological Operations
+
 ### Dataset
 
 The chosen dataset is <cite><a href="https://www.med.upenn.edu/cbica/brats2020/data.html">BraTS2020</a></cite> [2, 3, 4, 5, 6, 7]. It is divided into three separate cohorts: Training, Validation, and Testing. The Training dataset
-is composed of multi-parametric MRI (mpMRI) scans from 369 diffuse glioma patients; glioma is considered a type of tumor. Each MRI volume is skull-stripped (the skull was extracted), and there are annotated masks for the tumors. The ground truth labels (masks) were provided by expert human annotators. 
+is composed of MRI scans from 369 diffuse glioma patients; glioma is considered a type of tumor. Each MRI volume is skull-stripped (the skull was extracted), and there are annotated masks for the tumors. The ground truth labels (masks) were provided by expert human annotators. 
 
 The BraTS 2020 Validation cohort is composed of 125 cases of patients with diffuse
-gliomas, and it is similar to the Training Dataset. The ground truth labels for the validation data are not provided.
-
-For now, we don't plan to use the Testing Dataset in this project.
+gliomas, and it is similar to the Training Dataset. The ground truth labels for the validation data are not provided. For this reason, we don't plan to use the Validation Dataset in this project. The Testing Dataset is only available to actual participants of the Multimodal Brain Tumor Segmentation Challenge 2020, and as such we don't have access to this cohort.
 
 ### Input/Output Examples
+
+Some examples of the input images and output images.
 
 ![brain](images/brain.png)  |  ![]()
 

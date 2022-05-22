@@ -27,7 +27,7 @@ and exhibit considerable variability from patient to patient. " </em>
 
 This project aims to segment brain tumor from magnetic resonance imaging (MRI) scans. This task involves separating the tumoral tissue from the normal gray matter and white matter tissues of the brain. 
 
-The simplicity of the segmentation method and the degree of human supervision of the task is important for clicinal acceptance in the field - for this reason, this project focuses more on interpretable and simple methods of segmentation than emphasizing "black box" techniques (such as Deep Learning).
+The simplicity of the segmentation method and the degree of human supervision of the task is important for clinical acceptance in the field - for this reason, this project focuses more on interpretable and simple methods of segmentation than emphasizing "black box" techniques (such as Deep Learning). See [9] for more details on the unintended consequences of "black box" methods on medicine.
 
 Tumor segmentation is considered a difficult task even when using state of the art techniques. In this poject, we aim to surpass the difficulties involved to obtain the best achievable result by using simple methods.
 
@@ -47,7 +47,7 @@ According to [1], the following segmentation methods can be applied to MRI Brain
 
 among others.
 
-Besides the segmentation itself, according to [1], other image processing methods can be applied as auxiliary steps, such as :
+Also according to [1], besides the segmentation algorithms itself, other image processing methods can be applied as auxiliary steps, such as :
 
 - Image Enhancement
 - Image Filtering
@@ -102,3 +102,5 @@ https://doi.org/10.1016/j.mri.2013.05.002.
 [7] S. Bakas, H. Akbari, A. Sotiras, M. Bilello, M. Rozycki, J. Kirby, et al., "Segmentation Labels and Radiomic Features for the Pre-operative Scans of the TCGA-LGG collection", The Cancer Imaging Archive, 2017. DOI: 10.7937/K9/TCIA.2017.GJQ7R0EF
 
 [8] https://giou.stanford.edu/
+
+[9] Cabitza F, Rasoini R, Gensini GF. Unintended Consequences of Machine Learning in Medicine. JAMA. 2017;318(6):517–518. doi:10.1001/jama.2017.7797

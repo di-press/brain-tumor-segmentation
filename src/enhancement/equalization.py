@@ -24,3 +24,18 @@ def histogram_equalization(image, number_of_bins=256):
     equalized = np.interp(image.flatten(), bins[:-1], cumulative_histogram).reshape(image.shape)
 
     return equalized, cumulative_histogram
+
+if __name__ == "__main__":
+    import matplotlib.pyplot as plt
+    from skimage import data
+    from skimage import exposure
+
+    image = data.moon()
+    equalized, _ = histogram_equalization(image)
+    skimage_equalized = exposure.equalize_hist(image)
+
+    _, axes = plt.subplots(nrows=1, ncols=3)
+    axes[0].hist(image, bins=32)
+    axes[1].hist(equalized, bins=32)
+    axes[2].hist(255.0*skimage_equalized, bins=32)
+    plt.show()

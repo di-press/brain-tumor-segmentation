@@ -39,3 +39,35 @@ def gaussian_filter(image, kernel_size, sigma: float, on_frequency_domain=False)
                 processed_image[i, j] = np.sum(pad_image[i:i+kernel_size, j:j+kernel_size] * gauss_filter)
     
     return processed_image
+
+if __name__ == "__main__":
+    import matplotlib.pyplot as plt
+    from skimage import data
+    from skimage.color import rgb2gray
+    from skimage.filters import gaussian
+    from skimage.transform import resize
+    
+    image = resize(rgb2gray(data.cat()), (300, 300))
+    # skimage.gaussian don't have a window size parameter;
+    # instead it uses the truncate parameter https://stackoverflow.com/a/43617491
+    sigma = 0.5
+    truncate = 3
+    window_size = 5
+    skimage_blur = gaussian(image, sigma=sigma, truncate=truncate, mode="constant")
+    blur = gaussian_filter(image, kernel_size=window_size, sigma=sigma)
+    fourier_blur = gaussian_filter(image, kernel_size=window_size, sigma=sigma, on_frequency_domain=True)
+
+    _, axes = plt.subplots(nrows=3, ncols=3)
+    axes[0, 0].imshow(skimage_blur, cmap="gray")
+    axes[0, 1].imshow(blur, cmap="gray")
+    axes[0, 2].imshow(np.abs(blur - skimage_blur), cmap="gray")
+    
+    axes[1, 0].imshow(skimage_blur, cmap="gray")
+    axes[1, 1].imshow(fourier_blur, cmap="gray")
+    axes[1, 2].imshow(np.abs(fourier_blur - skimage_blur), cmap="gray")
+
+    axes[2, 0].imshow(blur, cmap="gray")
+    axes[2, 1].imshow(fourier_blur, cmap="gray")
+    axes[2, 2].imshow(np.abs(blur - fourier_blur), cmap="gray")
+
+    plt.show()

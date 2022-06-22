@@ -58,7 +58,8 @@ def otsu_global_thresholding(image, max_intensity=255):
     segmentation = (image >= global_optimum_value).astype(np.uint8)
     return segmentation, global_optimum_value
 
-if name == "__main__":
+
+if __name__ == "__main__":
     import matplotlib.pyplot as plt
     from skimage import data
     from skimage import restoration

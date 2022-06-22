@@ -68,7 +68,9 @@ Our image processing pipeline can be described as follows:
 
 6) Segmentation evaluation using IOU (Intersection over Union) metrics.
 
-**DIAGRAM**
+The following diagram ilustrates our pipeline:
+
+![diagram](images/steps.png) 
 
 ### Evaluation Metrics
 

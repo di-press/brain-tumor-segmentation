@@ -44,7 +44,7 @@ is composed of MRI scans from 369 diffuse glioma patients; glioma is considered 
 The BraTS 2020 Validation cohort is composed of 125 cases of patients with diffuse
 gliomas, and it is similar to the Training Dataset. The ground truth labels for the validation data are not provided. For this reason, we don't plan to use the Validation Dataset in this project. The Testing Dataset is only available to actual participants of the Multimodal Brain Tumor Segmentation Challenge 2020, and as such we don't have access to this cohort.
 
-The publicly available BraTS2020 dataset is huge, occupying around 50 GB of disk space. It would require large computational resources (both in time and memory) to use the entire dataset on this project. For this reason, we opted to use a randomly selected subset of the entire dataset. On this partial report, we randomly selected five (5) MRI scans, as this small sample of scans allows us to experiment more quickly on a variety of image processing techniques, both in the pre-processing steps as in the segmentation itself. However, we emphasize that for the final report we will increase the number of samples to have a more realistic and comprehensive result in the challeging task of tumor segmentation.
+The publicly available BraTS2020 dataset is huge, occupying around 50 GB of disk space. It would require large computational resources (both in time and memory) to use the entire dataset on this project. For this reason, we opted to use a randomly selected subset of the entire dataset. On this partial report, we randomly selected two (2) MRI scans, as this small sample of scans allows us to experiment more quickly on a variety of image processing techniques, both in the pre-processing steps as in the segmentation itself. However, we emphasize that for the final report we will increase the number of samples to have a more realistic and comprehensive result in the challeging task of tumor segmentation.
 
 ### Input/Output Examples
 
@@ -104,9 +104,23 @@ On this partial report, we implemented the following methods:
 
 Therefore, the core algorithms of our tasks can be found in the folder `src/segmentation`, while the other folders (such as `src/enhancement` and `src/filtering`) contains the implementation of pre-processing steps.
 
-We also provided a Jupyter Notebook (`partial.ipynb`) with some experiments containing initial results of the methods implemented. For reference, the results are show below:
+Some experiments containing initial results of the methods implemented are shown below:
 
-**IMAGES**
+![otsu_nofilter](images/otsu_nofilter.png) 
+![otsu_gaussian](images/otsu_gaussian.png) 
+![](images/otsu_bilateral.png) 
+![](images/otsu_median.png) 
+![](images/stadlbauer_nofilter.png) 
+![](images/stadlbauer_gaussian.png) 
+![](images/stadlbauer_bilateral.png) 
+![](images/stadlbauer_median.png) 
+![](images/watershed_nofilter.png)
+![](images/watershed_gaussian.png)
+![](images/watershed_median.png)  
+![](images/watershed_bilateral.png)  
+
+
+
 
 ### 5 - Next Steps 
 

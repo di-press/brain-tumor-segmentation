@@ -82,7 +82,11 @@ IOU is defined as the interssection of "segmented area" and the "Ground Truth (m
 
 ![iou](images/iou.png)  |  ![]()
 
-### References
+### 4 - Next Steps 
+
+For the final report of the project, we plan to investigate more segmentation methods, such as region growning, K-Means and Fuzzy C-Means. We also intend to implement the morphological operators to investigate it's impact as a post-processing step in the segmentation, evaluating whether it's an effective step to increase the robustness of the image segmentation or not. In our literature review, we also found references (see [10]) indicating that more sophisticated methods of image enhancement (such as Contrast Limited Adaptive Histogram Equalization (CLAHE)) can generate better results as a pre-processing step instead of the usual histogram equalization that we implemented.
+
+### 5 - References
 
 [1] Nelly Gordillo, Eduard Montseny, Pilar Sobrevilla,
 State of the art survey on MRI brain tumor segmentation,
@@ -108,3 +112,5 @@ https://doi.org/10.1016/j.mri.2013.05.002.
 [8] https://giou.stanford.edu/
 
 [9] Cabitza F, Rasoini R, Gensini GF. Unintended Consequences of Machine Learning in Medicine. JAMA. 2017;318(6):517–518. doi:10.1001/jama.2017.7797
+
+[10] Chen, Chiao-Min, et al. "Automatic contrast enhancement of brain MR images using hierarchical correlation histogram analysis." Journal of medical and biological engineering 35.6 (2015): 724-734.

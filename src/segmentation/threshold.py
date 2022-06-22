@@ -24,6 +24,7 @@ def stadlbauer_local_thresholding(image):
     """
     local_threshold = np.mean(image) + (3 * np.std(image))
     segmentation = (image > local_threshold)
+    segmentation = segmentation.astype(np.uint8)
     return segmentation
 
 

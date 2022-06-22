@@ -82,11 +82,37 @@ IOU is defined as the interssection of "segmented area" and the "Ground Truth (m
 
 ![iou](images/iou.png)  |  ![]()
 
-### 4 - Next Steps 
+### 4 - Initial code
+
+On this partial report, we implemented the following methods:
+
+1) Histogram equalization (see file `src/enhancement/equalization.py`)
+
+2) Gaussian filter (see file `src/filtering/gaussian.py`)
+
+3) Median filter (see file `src/filtering/median.py`)
+
+4) Bilateral filter (see file `src/filtering/bilateral.py`)
+
+5) Otsu's thresholding (see file `src/segmentation/threshold.py`)
+
+6) Stadlbauer's local thresholding (see file `src/segmentation/threshold.py`)
+
+7) Watershed segmentation using Sobel filter as gradient (see file `src/segmentation/watershed.py`)
+
+8) IOU metrics (see file `src/evaluation/iou.py`)
+
+Therefore, the core algorithms of our tasks can be found in the folder `src/segmentation`, while the other folders (such as `src/enhancement` and `src/filtering`) contains the implementation of pre-processing steps.
+
+We also provided a Jupyter Notebook (`partial.ipynb`) with some experiments containing initial results of the methods implemented. For reference, the results are show below:
+
+**IMAGES**
+
+### 5 - Next Steps 
 
 For the final report of the project, we plan to investigate more segmentation methods, such as region growning, K-Means and Fuzzy C-Means. We also intend to implement the morphological operators to investigate it's impact as a post-processing step in the segmentation, evaluating whether it's an effective step to increase the robustness of the image segmentation or not. In our literature review, we also found references (see [10]) indicating that more sophisticated methods of image enhancement (such as Contrast Limited Adaptive Histogram Equalization (CLAHE)) can generate better results as a pre-processing step instead of the usual histogram equalization that we implemented.
 
-### 5 - References
+### 6 - References
 
 [1] Nelly Gordillo, Eduard Montseny, Pilar Sobrevilla,
 State of the art survey on MRI brain tumor segmentation,

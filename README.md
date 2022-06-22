@@ -23,7 +23,7 @@ non-rigid and complex in shape, vary greatly in size and position,
 and exhibit considerable variability from patient to patient. " </em>
 
 
-### Objectives
+### 1 - Main Objective
 
 This project aims to segment brain tumor from magnetic resonance imaging (MRI) scans. This task involves separating the tumoral tissue from the normal gray matter and white matter tissues of the brain. 
 
@@ -36,24 +36,7 @@ Tumor segmentation is considered a difficult task even when using state of the a
 The application of this project is in medical imaging domain.
 
 
-### Image Processing Tasks
-
-According to [1], the following segmentation methods can be applied to MRI Brain Tumor Segmentation task:
-
-- K-Means
-- Watershed
-- Region Growing
-- Thresholding (Global or Local)
-
-among others.
-
-Also according to [1], besides the segmentation algorithms itself, other image processing methods can be applied as auxiliary steps, such as :
-
-- Image Enhancement
-- Image Filtering
-- Morphological Operations
-
-### Dataset
+### 2 - Description of input images - BraTS Dataset
 
 The chosen dataset is <cite><a href="https://www.med.upenn.edu/cbica/brats2020/data.html">BraTS2020</a></cite> [2, 3, 4, 5, 6, 7]. It is divided into three separate cohorts: Training, Validation, and Testing. The Training dataset
 is composed of MRI scans from 369 diffuse glioma patients; glioma is considered a type of tumor. Each MRI volume is skull-stripped (the skull was extracted), and there are annotated masks for the tumors. The ground truth labels (masks) were provided by expert human annotators. 
@@ -61,13 +44,33 @@ is composed of MRI scans from 369 diffuse glioma patients; glioma is considered 
 The BraTS 2020 Validation cohort is composed of 125 cases of patients with diffuse
 gliomas, and it is similar to the Training Dataset. The ground truth labels for the validation data are not provided. For this reason, we don't plan to use the Validation Dataset in this project. The Testing Dataset is only available to actual participants of the Multimodal Brain Tumor Segmentation Challenge 2020, and as such we don't have access to this cohort.
 
+The publicly available BraTS2020 dataset is huge, occupying around 50 GB of disk space. It would require large computational resources (both in time and memory) to use the entire dataset on this project. For this reason, we opted to use a randomly selected subset of the entire dataset. On this partial report, we randomly selected five (5) MRI scans, as this small sample of scans allows us to experiment more quickly on a variety of image processing techniques, both in the pre-processing steps as in the segmentation itself. However, we emphasize that for the final report we will increase the number of samples to have a more realistic and comprehensive result in the challeging task of tumor segmentation.
+
 ### Input/Output Examples
 
 Some examples of the input images and output images.
 
 ![brain](images/brain.png)  |  ![]()
 
-### Metrics
+### 3 - Image Processing 
+
+Our image processing pipeline can be described as follows:
+
+1) Read input image
+
+2) Histogram Equalization
+
+3) Image Filtering (such as Gaussian, median or bilateral filters) to remove noise
+
+4) Segmentation
+
+5) Optional: post-processing using morphological operators to fill holes and remove small objects.
+
+6) Segmentation evaluation using IOU (Intersection over Union) metrics.
+
+**DIAGRAM**
+
+### Evaluation Metrics
 
 Intersection over Union (IOU) is an evaluation metric used to measure the accuracy of an object detector, and it is commonly applied to segmentation task evaluation [8]. 
 
@@ -76,7 +79,6 @@ In this project, our main metric is IOU. The "segmented area" is defined as the 
 IOU is defined as the interssection of "segmented area" and the "Ground Truth (mask)" area, divided by the union of both of those two areas:
 
 ![iou](images/iou.png)  |  ![]()
-
 
 ### References
 

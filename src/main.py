@@ -1,11 +1,11 @@
 from aenum import Enum, NoAlias
 from functools import partial
 import itertools
-import matplotlib.pyplot as plt
 
 from src.enhancement import histogram_equalization
 from src.filtering import bilateral_filter, gaussian_filter, median_filter
 from src.segmentation import stadlbauer_local_thresholding, otsu_global_thresholding, sobel_watershed
+from src.plot import plot_result
 from src.util import Dataset, Pipeline
 
 class Methods(Enum):
@@ -57,32 +57,6 @@ def main():
         for idy, (prediction, iou_score) in enumerate(zip(predictions, iou_scores)):
             print(f"Experimental configuration {idx}, Image {idy}: IoU Score = {iou_score}")
             plot_result(dataset.flair_images[idy], prediction, dataset.mask_images[idy], "Result", show=False)
-
-def plot_result(input, predicted, ground_truth_mask, title, show=True, save_path: str=None):
-    """
-    Plot FLAIR input image, predicted segmentation and ground-truth segmentation.
-    """
-    fig, axes = plt.subplots(ncols=3, figsize=(9, 3), sharex=True, sharey=True)
-    ax = axes.ravel()
-
-    fig.suptitle(title)
-    ax[0].imshow(input, cmap="gray")
-    ax[0].set_title('Image')
-    ax[1].imshow(predicted, cmap="gray")
-    ax[1].set_title('Segmented image')
-    ax[2].imshow(ground_truth_mask, cmap="gray")
-    ax[2].set_title("Mask")
-
-    for a in ax:
-        a.set_axis_off()
-
-    fig.tight_layout()
-    
-    if show:
-        plt.show()
-    
-    if save_path is not None:
-        fig.savefig(save_path)
 
 if __name__ == "__main__":
     main()

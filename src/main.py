@@ -2,9 +2,6 @@ from aenum import Enum, NoAlias
 from functools import partial
 import itertools
 import matplotlib.pyplot as plt
-import numpy as np
-import pathlib
-from skimage import io
 
 from src.enhancement.equalization import histogram_equalization
 from src.filtering.gaussian import gaussian_filter
@@ -12,7 +9,8 @@ from src.filtering.bilateral import bilateral_filter
 from src.filtering.median import median_filter
 from src.segmentation.watershed import sobel_watershed
 from src.segmentation.threshold import otsu_global_thresholding, stadlbauer_local_thresholding
-from src.evaluation.iou import iou_similarity_score
+from src.util.dataset import Dataset
+from src.util.pipeline import Pipeline
 
 class Methods(Enum):
     _settings_ = NoAlias
@@ -62,67 +60,7 @@ def main():
 
         for idy, (prediction, iou_score) in enumerate(zip(predictions, iou_scores)):
             print(f"Experimental configuration {idx}, Image {idy}: IoU Score = {iou_score}")
-            plot_result(dataset.flair_images[idy], prediction, dataset.mask_images[idy], "Result")
-
-class Dataset:
-    def __init__(self, slice: int=78, dataset_path: pathlib.Path=pathlib.Path("dataset", "brats_subset")):
-        self.dataset_path = dataset_path
-        self.filenames = ["BraTS20_Training_064_flair.nii", "BraTS20_Training_064_seg.nii"]
-        #self.filenames = ["BraTS20_Training_112_flair.nii", "BraTS20_Training_112_seg.nii"]
-        ##self.filenames = ["BraTS20_Training_327_flair.nii", "BraTS20_Training_327_seg.nii"]
-        #self.filenames = ["BraTS20_Training_234_flair.nii", "BraTS20_Training_234_seg.nii"]
-        #self.filenames = self.dataset_path.rglob("*.nii")
-        self.flair_filenames = [filename for filename in self.filenames if "flair" in str(filename)]
-        self.mask_filenames = [filename for filename in self.filenames if "seg" in str(filename)]
-        
-        # Read and normalize FLAIR images
-        self.flair_images = []
-        for flair_file in self.flair_filenames:
-            image = io.imread(dataset_path / flair_file)
-            image = image[slice, :, :]
-            normalized_image = (image - np.min(image)) / (np.max(image) - np.min(image))
-            self.flair_images.append((255.0 * normalized_image).astype(np.uint8))
-
-        # Binarize segmentation masks (1 is tumoral tissue, 0 is not tumoral tissue)
-        self.mask_images = []
-        for mask_file in self.mask_filenames:
-            mask = io.imread(dataset_path / mask_file)[slice, :, :]
-            binary_mask = np.zeros_like(mask)
-            binary_mask[mask != 0] = 1
-            self.mask_images.append(binary_mask)
-
-        assert len(self.flair_images) == len(self.mask_images)
-
-class Pipeline:
-    def __init__(self, parameters: dict, parameters_args: dict=None):
-        self._steps = []
-        self._args = []
-        for step in ("equalization", "filtering", "segmentation", "post_processing"):
-            function = parameters.get(step, None)
-            if function.value is None:
-                continue
-            self._steps.append(function.value)
-            self._args.append(parameters_args.get(function.name.lower(), None))
-
-    def apply(self, input_images, ground_truth_images):
-        images = input_images
-        for function, args in zip(self._steps, self._args):
-            new_images = []
-            for image in images:
-                if args is not None:
-                    result = function(image, **args)
-                else:
-                    result = function(image)
-
-                if isinstance(result, tuple):
-                    new_images.append(result[0])
-                else:
-                    new_images.append(result)
-            images = new_images
-        
-        predictions = [prediction for prediction in images]
-        iou_score = [iou_similarity_score(ground_truth, prediction) for ground_truth, prediction in zip(ground_truth_images, predictions)]
-        return predictions, iou_score
+            plot_result(dataset.flair_images[idy], prediction, dataset.mask_images[idy], "Result", show=False)
 
 def plot_result(input, predicted, ground_truth_mask, title, show=True, save_path: str=None):
     """

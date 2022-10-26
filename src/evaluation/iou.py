@@ -12,8 +12,17 @@ def iou_similarity_score(ground_truth_mask, predicted):
         (float): the similarity score between the ground truth and the prediction,
         computed as the the area of intersection divided by the area of union.
     """
+    is_binary_array = lambda array: ((array == 0) | (array == 1)).all()
+    assert is_binary_array(ground_truth_mask), f"Ground-truth segmentation is not a binary image"
+    assert is_binary_array(predicted), f"Predicted segmentation is not a binary image"
     intersection = np.logical_and(predicted, ground_truth_mask)
     union = np.logical_or(predicted, ground_truth_mask)
+
+    all_zeros_array = lambda array: not np.any(array)
+    if all_zeros_array(union):
+        assert all_zeros_array(ground_truth_mask)
+        return 1.0
+        
     return np.sum(intersection) / np.sum(union)
 
 if __name__ == "__main__":

@@ -1,0 +1,1 @@
+from .equalization import histogram_equalization

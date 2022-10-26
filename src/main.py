@@ -3,14 +3,10 @@ from functools import partial
 import itertools
 import matplotlib.pyplot as plt
 
-from src.enhancement.equalization import histogram_equalization
-from src.filtering.gaussian import gaussian_filter
-from src.filtering.bilateral import bilateral_filter
-from src.filtering.median import median_filter
-from src.segmentation.watershed import sobel_watershed
-from src.segmentation.threshold import otsu_global_thresholding, stadlbauer_local_thresholding
-from src.util.dataset import Dataset
-from src.util.pipeline import Pipeline
+from src.enhancement import histogram_equalization
+from src.filtering import bilateral_filter, gaussian_filter, median_filter
+from src.segmentation import stadlbauer_local_thresholding, otsu_global_thresholding, sobel_watershed
+from src.util import Dataset, Pipeline
 
 class Methods(Enum):
     _settings_ = NoAlias

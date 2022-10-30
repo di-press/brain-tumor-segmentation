@@ -4,8 +4,6 @@
 
 - Diany Pressato
 - Matheus da Silva Araujo
-- Maurilio da Motta Meireles
-- Yure Pablo do Nascimento
 
 ## Abstract
 
@@ -72,6 +70,8 @@ The following diagram ilustrates our pipeline:
 
 ![diagram](images/steps.png) 
 
+TODO: morphological operators were implemented, update diagram.
+
 ### Evaluation Metrics
 
 Intersection over Union (IOU) is an evaluation metric used to measure the accuracy of an object detector, and it is commonly applied to segmentation task evaluation [8]. 
@@ -120,13 +120,19 @@ Some experiments containing initial results of the methods implemented are shown
 ![](images/watershed_bilateral.png)  
 
 
-
-
-### 5 - Next Steps 
-
-For the final report of the project, we plan to investigate more segmentation methods, such as region growning, K-Means and Fuzzy C-Means. We also intend to implement the morphological operators to investigate it's impact as a post-processing step in the segmentation, evaluating whether it's an effective step to increase the robustness of the image segmentation or not. In our literature review, we also found references (see [10]) indicating that more sophisticated methods of image enhancement (such as Contrast Limited Adaptive Histogram Equalization (CLAHE)) can generate better results as a pre-processing step instead of the usual histogram equalization that we implemented.
-
 ### 6 - References
+
+Book & courses references:
+
+Burger, Wilhelm, and Mark J. Burge. Digital image processing: an algorithmic introduction using Java. Springer, 2016.
+
+Nayar, Shree. First Principles of Computer Vision. 
+
+Nixon, Mark, and Alberto Aguado. Feature extraction and image processing for computer vision. Academic press, 2019.
+
+Szeliski, Richard. Computer vision: algorithms and applications. Springer Nature, 2022.
+
+Specific bibliography references:
 
 [1] Nelly Gordillo, Eduard Montseny, Pilar Sobrevilla,
 State of the art survey on MRI brain tumor segmentation,

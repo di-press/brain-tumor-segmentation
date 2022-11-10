@@ -48,7 +48,7 @@ The publicly available BraTS2020 dataset is huge, occupying around 50 GB of disk
 
 Some examples of the input images and output images.
 
-![brain](images/brain.png)  |  ![]()
+![brain](images/brain.png?raw=True)  |  ![]()
 
 ### 3 - Image Processing 
 
@@ -68,7 +68,7 @@ Our image processing pipeline can be described as follows:
 
 The following diagram ilustrates our pipeline:
 
-![diagram](images/steps.png) 
+![diagram](images/steps.png?raw=True) 
 
 TODO: morphological operators were implemented, update diagram.
 
@@ -80,7 +80,7 @@ In this project, our main metric is IOU. The "segmented area" is defined as the 
 
 IOU is defined as the interssection of "segmented area" and the "Ground Truth (mask)" area, divided by the union of both of those two areas:
 
-![iou](images/iou.png)  |  ![]()
+![iou](images/iou.png?raw=True)  |  ![]()
 
 ### 4 - Initial code
 
@@ -106,18 +106,18 @@ Therefore, the core algorithms of our tasks can be found in the folder `src/segm
 
 Some experiments containing initial results of the methods implemented are shown below:
 
-![otsu_nofilter](images/otsu_nofilter.png) 
-![otsu_gaussian](images/otsu_gaussian.png) 
-![](images/otsu_bilateral.png) 
-![](images/otsu_median.png) 
-![](images/stadlbauer_nofilter.png) 
-![](images/stadlbauer_gaussian.png) 
-![](images/stadlbauer_bilateral.png) 
-![](images/stadlbauer_median.png) 
-![](images/watershed_nofilter.png)
-![](images/watershed_gaussian.png)
-![](images/watershed_median.png)  
-![](images/watershed_bilateral.png)  
+![otsu_nofilter](images/otsu_nofilter.png?raw=True) 
+![otsu_gaussian](images/otsu_gaussian.png?raw=True) 
+![](images/otsu_bilateral.png?raw=True) 
+![](images/otsu_median.png?raw=True) 
+![](images/stadlbauer_nofilter.png?raw=True) 
+![](images/stadlbauer_gaussian.png?raw=True) 
+![](images/stadlbauer_bilateral.png?raw=True) 
+![](images/stadlbauer_median.png?raw=True) 
+![](images/watershed_nofilter.png?raw=True)
+![](images/watershed_gaussian.png?raw=True)
+![](images/watershed_median.png?raw=True)  
+![](images/watershed_bilateral.png?raw=True)  
 
 
 ### 6 - References
